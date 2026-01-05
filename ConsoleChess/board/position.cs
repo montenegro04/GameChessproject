@@ -1,11 +1,11 @@
 namespace board  
 {
-    class Position
+    public class Position
     {
         public int line{ get; set; }
         public int column{ get; set; }
 
-        public boardPosition(int line, int column)
+        public Position(int line, int column)
         {
             this.line = line;
             this.column = column;
