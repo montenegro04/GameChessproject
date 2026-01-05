@@ -1,0 +1,11 @@
+namespace board{
+    enum Color
+    {
+        White,
+        Black,
+        Red,
+        Blue,
+        Green,
+        Yellow
+    }
+}

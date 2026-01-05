@@ -1,6 +1,6 @@
 namespace board  
 {
-    class boardPosition
+    class Position
     {
         public int line{ get; set; }
         public int column{ get; set; }
