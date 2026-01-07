@@ -10,15 +10,25 @@ namespace ConsoleChess
         {
             try
             {
-                Board board = new Board(8, 8);
+               MatchChess match = new MatchChess();
+               
+               while (!match.finished){
+            
+                    Console.Clear();
+                    Screen.PrintBoard(match.board);
 
-                board.putPiece(new Tower(Color.White, board), new Position(0, 0));
-                board.putPiece(new Tower(Color.Black, board), new Position(1, 3));
-                board.putPiece(new King(Color.Black, board), new Position(4, 5));
+                    Console.WriteLine();
+                    Console.WriteLine("Enter the origin/destination starting with the letter(ex.:c2):");
 
-                board.putPiece(new Tower(Color.White, board), new Position(3, 5));
+                    Console.Write("Origin: ");
+                    Position origin = Screen.readPositionChess().toPosition();
+                   
+                    Console.Write("Destination: ");
+                    Position destination = Screen.readPositionChess().toPosition();
 
-                Screen.PrintBoard(board);
+                    match.executeMove(origin, destination);
+                }
+
             }
             catch (Exception e)
             {
