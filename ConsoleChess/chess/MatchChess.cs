@@ -6,8 +6,8 @@ namespace chess
     class MatchChess
     {
         public Board board{ get;  private set; }
-        private int turn;
-        private Color currentPlayer;
+        public int turn{ get;  private set; }
+        public  Color currentPlayer{ get;  private set; }
         public bool finished { get; private set; }
 
         public MatchChess()
@@ -24,6 +24,49 @@ namespace chess
             p.incrementMoveCount();
             Piece capturedPiece = board.removePiece(destination);
             board.putPiece(p, destination);
+        }
+
+        public void validadePositionOrigin(Position pos)
+        {
+            if(board.piece(pos) == null)
+            {
+                throw new BoardException("There is no piece in the chosen origin position!");
+            }
+            if(currentPlayer != board.piece(pos).color)
+            {
+                throw new BoardException("The chosen piece is not yours!");
+            }
+            if(!board.piece(pos).existMovePossible())
+            {
+                throw new BoardException("There are no possible moves for the origin piece!");
+            }
+        }
+
+        public void makeMove(Position origin, Position destination)
+        {
+            executeMove(origin, destination);
+            turn++;
+            currentPlayer = (currentPlayer == Color.White) ? Color.Black : Color.White;
+        }
+
+        public void validadePositionDestination(Position origin, Position destination)
+        {
+            if(!board.piece(origin).canMoveTo(destination))
+            {
+                throw new BoardException("The chosen piece can't move to the destination position!");
+            }
+        }
+
+        public void changePlayer()
+        {
+            if(currentPlayer == Color.White)
+            {
+                currentPlayer = Color.Black;
+            }
+            else
+            {
+                currentPlayer = Color.White;
+            }
         }
 
         private void putPieces()

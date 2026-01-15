@@ -84,22 +84,23 @@ namespace ConsoleChess
             }
         }
 
-        public static void printPiece(Piece piece){  
-
-            if(piece == null){
-                Console.Write("- "); 
+        public static void printPiece(Piece piece)
+        {
+            if (piece == null)
+            {
+                Console.Write("- ");
             }
             else
             {
                 if (piece.color == Color.White)
                 {
-                    Console.Write(piece);
+                    Console.Write(piece + " ");
                 }
                 else
                 {
                     ConsoleColor aux = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(piece);
+                    Console.Write(piece + " ");
                     Console.ForegroundColor = aux;
                 }
             }
