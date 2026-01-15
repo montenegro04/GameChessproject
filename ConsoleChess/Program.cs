@@ -17,10 +17,7 @@ namespace ConsoleChess
                     try{
             
                         Console.Clear();
-                        Screen.PrintBoard(match.board);
-                        Console.WriteLine();
-                        Console.WriteLine("Turn: " + match.turn);
-                        Console.WriteLine("Waiting for move: " + match.currentPlayer);
+                        Screen.printMatch(match);
 
                         Console.WriteLine();
                         Console.WriteLine("Enter the origin/destination starting with the letter(ex.:c2):");
@@ -32,7 +29,7 @@ namespace ConsoleChess
                         bool[,] possiblePosition = match.board.piece(origin).possibleMove();
 
                         Console.Clear();
-                        Screen.PrintBoard(match.board, possiblePosition);
+                        Screen.printBoard(match.board, possiblePosition);
 
                         Console.WriteLine();
                     

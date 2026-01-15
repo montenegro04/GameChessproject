@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using board;
 using chess;
 
@@ -6,7 +7,40 @@ namespace ConsoleChess
 {
     public class Screen
     {
-        public static void PrintBoard(Board board)
+
+        public static void printMatch(MatchChess match)
+        {
+            printBoard(match.board);
+            Console.WriteLine();
+            printCapturedPieces(match);
+            Console.WriteLine();
+            Console.WriteLine("Turn: " + match.turn);
+            Console.WriteLine("Waiting for move: " + match.currentPlayer);
+        }
+
+        public static void printCapturedPieces(MatchChess match)
+        {
+            Console.WriteLine("Captured pieces: ");
+            Console.Write("White: ");
+            printSet(match.capturedPieces(Color.White));
+            Console.WriteLine();
+            Console.WriteLine("Black: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            printSet(match.capturedPieces(Color.Black));
+            Console.WriteLine();
+
+        }
+
+        public static void printSet(HashSet<Piece> set)
+        {
+            Console.Write("[");
+            foreach (Piece x in set)
+            {
+                Console.Write(x + " ");
+            }
+            Console.Write("]");
+        }
+        public static void printBoard(Board board)
         {
             Console.WriteLine();
             for (int i = 0; i < board.lines; i++)
@@ -21,7 +55,7 @@ namespace ConsoleChess
             Console.WriteLine("  a b c d e f g h");
             Console.WriteLine();
         }
-        public static void PrintBoard(Board board, bool[,] possiblePosition)
+        public static void printBoard(Board board, bool[,] possiblePosition)
         {
             ConsoleColor backOriginal = Console.BackgroundColor;
             ConsoleColor backAltered = ConsoleColor.DarkGray;
@@ -53,7 +87,7 @@ namespace ConsoleChess
             try
             {
                 string s = Console.ReadLine()?.Trim().ToLower();
-                if (string.IsNullOrEmpty(s) || s.Length < 2) throw new Exception("Posição inválida!");
+                if (string.IsNullOrEmpty(s) || s.Length < 2) throw new Exception("Invalid Position !");
 
                 s = s.Replace(" ", "");
                 char column;
