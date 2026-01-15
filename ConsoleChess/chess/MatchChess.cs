@@ -12,28 +12,65 @@ namespace chess
         public bool finished { get; private set; }
         private HashSet<Piece> pieces;
         private HashSet<Piece> captured;
+        public bool check { get; private set; }
 
         public MatchChess()
         {
             board = new Board(8, 8);
             turn = 1;
             currentPlayer = Color.White;   //regra do xadrez, o branco começa jogando
+            check = false;
             pieces = new HashSet<Piece>();
             captured = new HashSet<Piece>();
             putPieces();
         }
 
-        public void executeMove(Position origin, Position destination)
+        public Piece executeMove(Position origin, Position destination)
         {
-            Piece? p = board.removePiece(origin);
-            p?.incrementMoveCount();
-            Piece? capturedPiece = board.removePiece(destination);
-            board.putPiece(p!, destination);
+            Piece p = board.removePiece(origin);
+            p.incrementMoveCount();
+            Piece capturedPiece = board.removePiece(destination);
+            board.putPiece(p, destination);
 
             if(capturedPiece != null)
             {
                 captured.Add(capturedPiece);
             }
+            return capturedPiece;
+        }
+
+        public void movementUndo(Position origin, Position destination, Piece capturedPiece)
+        {
+            Piece p = board.removePiece(destination);
+            p.decrementMoveCount();
+
+            if(capturedPiece != null)
+            {
+                board.putPiece(capturedPiece, destination);
+                captured.Remove(capturedPiece);
+            }
+            board.putPiece(p, origin);
+        }
+        public void makeMove(Position origin, Position destination)
+        {
+            Piece pieceCaptured = executeMove(origin, destination);
+            if(isInCheck(opponent(currentPlayer)))
+            {
+                movementUndo(origin, destination, pieceCaptured);
+                throw new BoardException("You can't put yourself in check!");
+            }
+
+            if(isInCheck(opponent(currentPlayer)))
+            {
+                check = true;
+            }
+            else
+            {
+                check = false;
+            }
+            
+            turn++;
+            currentPlayer = (currentPlayer == Color.White) ? Color.Black : Color.White;
         }
 
         public void validadePositionOrigin(Position pos)
@@ -50,13 +87,6 @@ namespace chess
             {
                 throw new BoardException("There are no possible moves for the origin piece!");
             }
-        }
-
-        public void makeMove(Position origin, Position destination)
-        {
-            executeMove(origin, destination);
-            turn++;
-            currentPlayer = (currentPlayer == Color.White) ? Color.Black : Color.White;
         }
 
         public void validadePositionDestination(Position origin, Position destination)
@@ -104,6 +134,49 @@ namespace chess
             }
             aux.ExceptWith(capturedPieces(color));
             return aux;
+        }
+
+        private Color opponent(Color color)
+        {
+            if(color == Color.White)
+            {
+                return Color.Black;
+            }
+            else
+            {
+                return Color.White;
+            }
+        }
+
+        private Piece king(Color color)
+        {
+            foreach(Piece x in piecesInGame(color))
+            {
+                if(x is King)
+                {
+                    return x;
+                }
+            }
+           return null;
+        }
+
+        public bool isInCheck(Color color)
+        {
+            Piece k = king(color);
+            if(k == null)
+            {
+                throw new BoardException("There is no " + color + " king on the board!");
+            }
+
+            foreach(Piece x in piecesInGame(opponent(color)))
+            {
+                bool[,] mat = x.possibleMove();
+                if(mat[k.position.line, k.position.column])
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void putNewPiece(char column, int line, Piece piece)
