@@ -36,6 +36,27 @@ namespace chess
             {
                 captured.Add(capturedPiece);
             }
+
+            //#especialmove small rocke
+            if(p is King && destination.column == origin.column +2)
+            {
+                Position originT = new Position(origin.line, origin.column +3);
+                Position destinationT = new Position(origin.line, origin.column +1);
+                Piece t = board.removePiece(originT);
+                t.incrementMoveCount();
+                board.putPiece(t, destinationT);
+            }
+
+            //#especialmove big rocke
+            if(p is King && destination.column == origin.column -2)
+            {
+                Position originT = new Position(origin.line, origin.column -4);
+                Position destinationT = new Position(origin.line, origin.column -1);
+                Piece t = board.removePiece(originT);
+                t.incrementMoveCount();
+                board.putPiece(t, destinationT);
+            }
+
             return capturedPiece;
         }
 
@@ -50,6 +71,26 @@ namespace chess
                 captured.Remove(capturedPiece);
             }
             board.putPiece(p, origin);
+
+            //#especialmove small rocke
+            if(p is King && destination.column == origin.column + 2)
+            {
+                Position originT = new Position(origin.line, origin.column + 3);
+                Position destinationT = new Position(origin.line, origin.column + 1);
+                Piece t = board.removePiece(destinationT);
+                t.decrementMoveCount();
+                board.putPiece(t, originT);
+            }
+
+            //#especialmove big rocke
+            if(p is King && destination.column == origin.column - 2)
+            {
+                Position originT = new Position(origin.line, origin.column - 4);
+                Position destinationT = new Position(origin.line, origin.column - 1);
+                Piece t = board.removePiece(destinationT);
+                t.decrementMoveCount();
+                board.putPiece(t, originT);
+            }
         }
         public void makeMove(Position origin, Position destination)
         {
@@ -231,7 +272,7 @@ namespace chess
             putNewPiece('b', 1, new Horse(Color.White, board));
             putNewPiece('c', 1, new Bishop(Color.White, board));
             putNewPiece('d', 1, new Lady(Color.White, board));
-            putNewPiece('e', 1, new King(Color.White, board));
+            putNewPiece('e', 1, new King(Color.White, board, this));
             putNewPiece('f', 1, new Bishop(Color.White, board));
             putNewPiece('g', 1, new Horse(Color.White, board));
             putNewPiece('h', 1, new Tower(Color.White, board));
@@ -248,7 +289,7 @@ namespace chess
             putNewPiece('b', 8, new Horse(Color.Black, board));
             putNewPiece('c', 8, new Bishop(Color.Black, board));
             putNewPiece('d', 8, new Lady(Color.Black, board));
-            putNewPiece('e', 8, new King(Color.Black, board));
+            putNewPiece('e', 8, new King(Color.Black, board, this));
             putNewPiece('f', 8, new Bishop(Color.Black, board));
             putNewPiece('g', 8, new Horse(Color.Black, board));
             putNewPiece('h', 8, new Tower(Color.Black, board));
