@@ -39,7 +39,7 @@ namespace board{
             return false;
         }
 
-        public bool canMoveTo(Position pos)
+        public bool possibleMovement(Position pos)
         {
             return possibleMove()[pos.line, pos.column];
         }
