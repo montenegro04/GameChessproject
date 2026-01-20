@@ -227,20 +227,43 @@ namespace chess
 
         private void putPieces()
         {
-            putNewPiece('c', 1, new Tower(Color.White, board));
-            putNewPiece('c', 2, new Tower(Color.White, board));
-            putNewPiece('d', 2, new Tower(Color.White, board));
-            putNewPiece('e', 2, new Tower(Color.White, board));
-            putNewPiece('e', 1, new Tower(Color.White, board));
-            putNewPiece('d', 1, new King(Color.White, board));
+            putNewPiece('a', 1, new Tower(Color.White, board));
+            putNewPiece('b', 1, new Horse(Color.White, board));
+            putNewPiece('c', 1, new Bishop(Color.White, board));
+            putNewPiece('d', 1, new Lady(Color.White, board));
+            putNewPiece('e', 1, new King(Color.White, board));
+            putNewPiece('f', 1, new Bishop(Color.White, board));
+            putNewPiece('g', 1, new Horse(Color.White, board));
+            putNewPiece('h', 1, new Tower(Color.White, board));
+            putNewPiece('a', 2, new Pawn(Color.White, board));
+            putNewPiece('b', 2, new Pawn(Color.White, board));
+            putNewPiece('c', 2, new Pawn(Color.White, board));
+            putNewPiece('d', 2, new Pawn(Color.White, board));
+            putNewPiece('e', 2, new Pawn(Color.White, board));
+            putNewPiece('f', 2, new Pawn(Color.White, board));
+            putNewPiece('g', 2, new Pawn(Color.White, board));
+            putNewPiece('h', 2, new Pawn(Color.White, board));
 
-            putNewPiece('c', 7, new Tower(Color.Black, board));
-            putNewPiece('c', 8, new Tower(Color.Black, board));
-            putNewPiece('d', 7, new Tower(Color.Black, board));
-            putNewPiece('e', 7, new Tower(Color.Black, board));
-            putNewPiece('e', 8, new Tower(Color.Black, board));
-            putNewPiece('d', 8, new King(Color.Black, board));
+            putNewPiece('a', 8, new Tower(Color.Black, board));
+            putNewPiece('b', 8, new Horse(Color.Black, board));
+            putNewPiece('c', 8, new Bishop(Color.Black, board));
+            putNewPiece('d', 8, new Lady(Color.Black, board));
+            putNewPiece('e', 8, new King(Color.Black, board));
+            putNewPiece('f', 8, new Bishop(Color.Black, board));
+            putNewPiece('g', 8, new Horse(Color.Black, board));
+            putNewPiece('h', 8, new Tower(Color.Black, board));
+            putNewPiece('a', 7, new Pawn(Color.Black, board));
+            putNewPiece('b', 7, new Pawn(Color.Black, board));
+            putNewPiece('c', 7, new Pawn(Color.Black, board));
+            putNewPiece('d', 7, new Pawn(Color.Black, board));
+            putNewPiece('e', 7, new Pawn(Color.Black, board));
+            putNewPiece('f', 7, new Pawn(Color.Black, board));
+            putNewPiece('g', 7, new Pawn(Color.Black, board));
+            putNewPiece('h', 7, new Pawn(Color.Black, board));
 
+
+
+            
         }
     }
 }

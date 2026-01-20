@@ -2,20 +2,21 @@ using board;
 
 namespace chess
 {
-    class King : Piece
+    class Horse : Piece
     {
-        public King(Color color, Board board) : base(board, color){
+        public Horse(Color color, Board board) : base(board, color)
+        {
         }
 
         public override string ToString()
         {
-            return "R";
+            return "C";
         }
 
         private bool canMove(Position position)
         {
-            Piece p = board.piece(position);
-            return p == null || p.color != color;
+            Piece piece = board.piece(position);
+            return piece == null || piece.color != color;
         }
 
         public override bool[,] possibleMove()
@@ -23,64 +24,55 @@ namespace chess
             bool[,] mat = new bool[board.lines, board.columns];
             Position pos = new Position(0, 0);
 
-            // above
-            pos.setValues(position.line - 1, position.column);
+            pos.setValues(position.line - 1, position.column - 2);
             if (board.validPosition(pos) && canMove(pos))
             {
                 mat[pos.line, pos.column] = true;
             }
 
-            //northeast
-            pos.setValues(position.line - 1, position.column + 1);
+            pos.setValues(position.line - 2, position.column - 1);
             if (board.validPosition(pos) && canMove(pos))
             {
                 mat[pos.line, pos.column] = true;
             }
 
-            // right
-            pos.setValues(position.line, position.column + 1);
+            pos.setValues(position.line - 2, position.column + 1);
             if (board.validPosition(pos) && canMove(pos))
             {
                 mat[pos.line, pos.column] = true;
             }
 
-            // southeast
-            pos.setValues(position.line + 1, position.column + 1);
+            pos.setValues(position.line - 1, position.column + 2);
             if (board.validPosition(pos) && canMove(pos))
             {
                 mat[pos.line, pos.column] = true;
             }
 
-            // below
-            pos.setValues(position.line + 1, position.column);
+            pos.setValues(position.line + 1, position.column + 2);
             if (board.validPosition(pos) && canMove(pos))
             {
                 mat[pos.line, pos.column] = true;
             }
 
-            // southwest
-            pos.setValues(position.line + 1, position.column - 1);
+            pos.setValues(position.line + 2, position.column + 1);
             if (board.validPosition(pos) && canMove(pos))
             {
                 mat[pos.line, pos.column] = true;
             }
 
-            // left
-            pos.setValues(position.line, position.column - 1);
-            if (board.validPosition(pos) && canMove(pos))
+            pos.setValues(position.line + 2, position.column - 1);
+           if (board.validPosition(pos) && canMove(pos))
             {
                 mat[pos.line, pos.column] = true;
             }
 
-            // northwest
-            pos.setValues(position.line - 1, position.column - 1);
+            pos.setValues(position.line + 1, position.column - 2);
             if (board.validPosition(pos) && canMove(pos))
             {
                 mat[pos.line, pos.column] = true;
             }
 
             return mat;
-
         }
     }
 }
