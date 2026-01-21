@@ -41,9 +41,9 @@ The project is organized into two main layers to ensure separation of concerns:
 
 Prerequisite: **.NET SDK** installed.
 
-1.  1. **Clone the repository:**
+1. **Clone the repository:**
    ```bash
-   git clone: (https://github.com/montenegro04/GameChessproject.git)
+   git clone: https://github.com/montenegro04/GameChessproject
     ```
 2.  **Navigate to the project folder:**
     ```bash
@@ -53,6 +53,10 @@ Prerequisite: **.NET SDK** installed.
     ```bash
     dotnet run
     ```
+## 👨‍💻 Author
+
+**Gustavo Palmeira Montenegro**
+Control and Automation Engineering Student - UFPel
 
 ## 🔮 Future Improvements
 
@@ -60,8 +64,3 @@ Prerequisite: **.NET SDK** installed.
 * [ ] Add a "graveyard" feature to visualize captured pieces.
 * [ ] Create a match Save/Load system.
 * [ ] Develop a graphical Web UI using HTML, CSS, and JavaScript.
-
-## 👨‍💻 Author
-
-**Gustavo Palmeira Montenegro**
-Control and Automation Engineering Student - UFPel
