@@ -54,7 +54,7 @@ namespace chess
                     mat[pos.line, pos.column] = true;
                 }
 
-                //#especialmove en passant
+                //#specialmove en passant
                 if(position.line == 3)
                 {
                     Position left = new Position(position.line, position.column -1);
@@ -92,7 +92,7 @@ namespace chess
                     mat[pos.line, pos.column] = true;
                 }
 
-                //#especialmove en passant
+                //#specialmove en passant
                 if (position.line == 4)
                 {
                     Position left = new Position(position.line, position.column - 1);

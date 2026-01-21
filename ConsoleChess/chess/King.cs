@@ -88,7 +88,7 @@ namespace chess
                 mat[pos.line, pos.column] = true;
             }
 
-            //#especialmove roque
+            //#specialmove roque
             if(moveCount == 0 && !game.check)
             {
                 //king side small rocke

@@ -19,7 +19,7 @@ namespace chess
         {
             board = new Board(8, 8);
             turn = 1;
-            currentPlayer = Color.White;   //regra do xadrez, o branco começa jogando
+            currentPlayer = Color.White;   //Chess rule: white moves first
             check = false;
             vulnerableEnPassant = null;
             pieces = new HashSet<Piece>();
@@ -39,7 +39,7 @@ namespace chess
                 captured.Add(capturedPiece);
             }
 
-            //#especialmove small rocke
+            //#specialmove small rocke
             if(p is King && destination.column == origin.column +2)
             {
                 Position originT = new Position(origin.line, origin.column +3);
@@ -49,7 +49,7 @@ namespace chess
                 board.putPiece(t, destinationT);
             }
 
-            //#especialmove big rocke
+            //#specialmove big rocke
             if(p is King && destination.column == origin.column -2)
             {
                 Position originT = new Position(origin.line, origin.column -4);
@@ -59,7 +59,7 @@ namespace chess
                 board.putPiece(t, destinationT);
             }
 
-            //#especialmove en passant
+            //#specialmove en passant
             if(p is Pawn)
             {
                 if(origin.column != destination.column && capturedPiece == null)
@@ -93,7 +93,7 @@ namespace chess
             }
             board.putPiece(p, origin);
 
-            //#especialmove small rocke
+            //#specialmove small rocke
             if(p is King && destination.column == origin.column + 2)
             {
                 Position originT = new Position(origin.line, origin.column + 3);
@@ -103,7 +103,7 @@ namespace chess
                 board.putPiece(t, originT);
             }
 
-            //#especialmove big rocke
+            //#specialmove big rocke
             if(p is King && destination.column == origin.column - 2)
             {
                 Position originT = new Position(origin.line, origin.column - 4);
@@ -113,7 +113,7 @@ namespace chess
                 board.putPiece(t, originT);
             }
 
-            //#especialmove en passant
+            //#specialmove en passant
             if(p is Pawn)
             {
                 if(origin.column != destination.column && capturedPiece == vulnerableEnPassant)
@@ -351,10 +351,6 @@ namespace chess
             putNewPiece('f', 7, new Pawn(Color.Black, board, this));
             putNewPiece('g', 7, new Pawn(Color.Black, board, this));
             putNewPiece('h', 7, new Pawn(Color.Black, board, this));
-
-
-
-            
         }
     }
 }

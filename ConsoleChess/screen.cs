@@ -93,8 +93,8 @@ namespace ConsoleChess
         {
             try
             {
-                string s = Console.ReadLine()?.Trim().ToLower();
-                if (string.IsNullOrEmpty(s) || s.Length < 2) throw new Exception("Invalid Position !");
+                string s = Console.ReadLine().Trim().ToLower();
+                if (string.IsNullOrEmpty(s) || s.Length < 2) throw new Exception("Invalid Position!");
 
                 s = s.Replace(" ", "");
                 char column;
@@ -114,14 +114,14 @@ namespace ConsoleChess
                 }
                 else
                 {
-                    throw new Exception("Posição inválida!");
+                    throw new Exception("Invalid Position!");
                 }
 
                 return new PositionChess(column, line);
             }
             catch
             {
-                throw new Exception("Posição inválida!");
+                throw new Exception("Invalid Position!");
             }
         }
 
