@@ -1,66 +1,65 @@
 # ♟️ Console Chess (C#)
 
-A complete chess game system developed in C# and .NET, running directly in the console. This project focuses on the practical application of **Programming Logic** and **Object-Oriented Programming (OOP)**, implementing all official game rules.
+Sistema completo de jogo de xadrez desenvolvido em C# e .NET, executado diretamente no console. Este projeto foca na aplicação prática de **Lógica de Programação** e **Programação Orientada a Objetos (POO)**, implementando todas as regras oficiais do jogo.
 
-## 📋 About the Project
+## 📋 Sobre o Projeto
 
-This is a console-based application that simulates a chess match. The main goal was to build a robust architecture capable of validating complex moves and managing the match state turn by turn.
+Trata-se de uma aplicação baseada em console que simula uma partida de xadrez. O objetivo principal foi construir uma arquitetura robusta, capaz de validar movimentos complexos e gerenciar o estado da partida turno a turno.
 
-The system handles exceptions to prevent illegal moves and ensures strict adherence to chess rules.
+O sistema realiza o tratamento de exceções para impedir movimentos ilegais e garante a aderência estrita às regras do xadrez.
 
-## ⚙️ Features and Implemented Rules
+## ⚙️ Funcionalidades e Regras Implementadas
 
-The game goes beyond basic movement, supporting special moves and critical state detection:
+O jogo vai além da movimentação básica, suportando jogadas especiais e detecção de estados críticos:
 
-* **Turn System:** Automatic control of current player (White/Black).
-* **Color Handling:**
-    * White Pieces: Displayed in **White**.
-    * Black Pieces: Displayed in **Yellow** (for better visibility on dark terminals).
-* **Special Moves:**
-    * ✅ **Castling:** Kingside and Ladyside.
-    * ✅ **En Passant:** Special pawn capture.
-    * ✅ **Promotion:** Pawn transformation upon reaching the last rank.
-* **Game States:** Automatic detection of **Check** and **Checkmate**, ending the match when necessary.
+* **Sistema de Turnos:** Controle automático do jogador atual (Brancas/Pretas).
+* **Interface Visual:** * Peças Brancas: Exibidas em **Branco**.
+    * Peças Pretas: Exibidas em **Amarelo** (para melhor visibilidade em terminais escuros).
+* **Jogadas Especiais:**
+    * ✅ **Roque:** Pequeno (ala do rei) e Grande (ala da dama).
+    * ✅ **En Passant:** Captura especial de peão.
+    * ✅ **Promoção:** Transformação do peão ao atingir a última fileira.
+* **Estados de Jogo:** Detecção automática de **Xeque** e **Xequemate**, encerrando a partida conforme necessário.
 
-## 📂 Project Structure
+## 📂 Estrutura do Projeto
 
-The project is organized into two main layers to ensure separation of concerns:
+O projeto está organizado em duas camadas principais para garantir a separação de responsabilidades:
 
-* **Board Layer:** Handles the generic logic of the board, pieces, and positioning (reusable for other board games).
-* **Chess Layer:** Implements specific chess rules, special moves, and match logic.
+* **Camada de Tabuleiro:** Gerencia a lógica genérica do tabuleiro, peças e posicionamento (reutilizável para outros jogos de tabuleiro).
+* **Camada de Xadrez:** Implementa as regras específicas do xadrez, jogadas especiais e a lógica da partida.
 
-## 🛠 Technologies and Concepts
+## 🛠 Tecnologias e Conceitos
 
 * **C#**
 * **.NET**
-* **OOP:** Encapsulation, Inheritance, Polymorphism, and Overloading.
-* **Matrices:** 2D grid positioning logic.
-* **Exception Handling:** Shielding against invalid user inputs.
+* **POO:** Encapsulamento, Herança, Polimorfismo e Sobrecarga.
+* **Matrizes:** Lógica de posicionamento em grade bidimensional.
+* **Tratamento de Exceções:** Proteção contra entradas inválidas do usuário.
 
-## 🚀 How to Run
+## 🚀 Como Executar
 
-Prerequisite: **.NET SDK** installed.
+**Pré-requisito:** .NET SDK instalado.
 
-1. **Clone the repository:**
-   ```bash
-   git clone: https://github.com/montenegro04/GameChessproject
+1.  **Clonar o repositório:**
+    ```bash
+    git clone [https://github.com/montenegro04/GameChessproject](https://github.com/montenegro04/GameChessproject)
     ```
-2.  **Navigate to the project folder:**
+2.  **Navegar até a pasta do projeto:**
     ```bash
     cd GameChessproject
     ```
-3.  **Run the application:**
+3.  **Executar a aplicação:**
     ```bash
     dotnet run
     ```
-## 👨‍💻 Author
 
-**Gustavo Palmeira Montenegro**
-Control and Automation Engineering Student - UFPel
+## 👨‍💻 Autor
 
-## 🔮 Future Improvements
+**Gustavo Palmeira Montenegro** Estudante de Engenharia de Controle e Automação - UFPel
 
-* [ ] Implement a simple AI to play against the computer.
-* [ ] Add a "graveyard" feature to visualize captured pieces.
-* [ ] Create a match Save/Load system.
-* [ ] Develop a graphical Web UI using HTML, CSS, and JavaScript.
+## 🔮 Melhorias Futuras
+
+- [ ] Implementar uma Inteligência Artificial (IA) para o modo contra o computador.
+- [ ] Adicionar um painel de "cemitério" para visualização das peças capturadas.
+- [ ] Criar um sistema de persistência para Salvar/Carregar partidas.
+- [ ] Desenvolver uma interface gráfica Web utilizando HTML, CSS e JavaScript.
